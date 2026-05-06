@@ -1,0 +1,17 @@
+window {
+    font-family: "Inter", "JetBrains Mono";
+    font-size: 16px;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+}
+#input {
+    margin: 10px;
+    border: none;
+    background-color: #222222;
+    color: #ffffff;
+}
+#entry:selected {
+    background-color: #ffffff;
+    color: #1a1a1a;
+}

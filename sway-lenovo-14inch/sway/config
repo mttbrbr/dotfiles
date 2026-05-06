@@ -1,0 +1,176 @@
+### --- CORE SETTINGS ---
+set $mod Mod4
+set $term foot
+# ^ Cambia 'foot' con il tuo terminale se non si apre (es. alacritty, kitty, gnome-terminal)
+
+### --- ESTETICA MINIMAL TYPO ---
+font pango:Inter SemiBold 11
+default_border pixel 2
+default_floating_border none
+smart_borders on
+gaps inner 12
+gaps outer 5
+
+client.focused          #ffffff #222222 #ffffff #ffffff   #ffffff
+client.focused_inactive #333333 #222222 #888888 #222222   #333333
+client.unfocused        #222222 #222222 #888888 #222222   #222222
+
+### --- TASTI DI SISTEMA ---
+bindsym $mod+Return exec $term
+bindsym $mod+Shift+q kill
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Esci?' -b 'Sì' 'swaymsg exit'
+
+### --- NAVIGAZIONE FINESTRE ---
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+### --- WORKSPACES (I TASTI CHE MANCAVANO) ---
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+
+# Sposta finestra nel workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+
+### --- LAYOUT ---
+bindsym $mod+f fullscreen toggle
+bindsym $mod+v split v
+bindsym $mod+b split h
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+p focus mode_toggle
+
+### --- OUTPUT & BARRA ---
+output * background #1a1a1a solid_color
+bar {
+    swaybar_command waybar
+}
+# Forza Firefox ad aprirsi sempre nel workspace 2 (per esempio)
+assign [class="Firefox"] workspace number 2
+
+# Oppure fallo aprire sempre in modalità "tabbed" o "fullscreen" appena lo lanci
+for_window [class="Firefox"] fullscreen enable
+
+
+input "type:touchpad" {
+    # Inverte lo scorrimento
+    natural_scroll enabled
+    # Già che ci sei, abilita il tocco per cliccare
+    tap enabled
+    # Velocità del puntatore (opzionale, da -1.0 a 1.0)
+    pointer_accel 0.3
+}
+
+input "type:keyboard" {
+    xkb_layout it
+}
+
+
+
+bindsym $mod+space exec brightnessctl -d "platform::kbd_backlight" get | grep -q 0 && brightnessctl -d "platform::kbd_backlight" set 1 || brightnessctl -d "platform::kbd_backlight" set 0
+
+
+bindsym $mod+d exec wofi --show drun
+
+bindsym $mod+Shift+f exec ~/.config/wofi/powermenu.sh
+
+# Definisci il comando
+set $lock_cmd gtklock --css ~/.config/gtklock/style.css --modules userinfo powerbar
+
+# Avvia il blocco allo standby
+exec swayidle -w \
+     timeout 300 '$lock_cmd' \
+     before-sleep '$lock_cmd'
+
+# Definizione dello stile TUI
+set $tui_lock swaylock --color 000000 --font 'Noto Sans Mono' --indicator-radius 0 --indicator-thickness 0 --clock --text-color 00ff00
+
+# Blocca lo schermo con Win + L usando lo script "carino"
+bindsym Mod4+l exec ~/.local/bin/lock.sh
+
+# Avvio automatico di swayidle
+exec swayidle -w \
+    timeout 300 'swaylock -c 1a1a1a' \
+    timeout 600 'swaymsg "output * dpms off"' \
+    resume 'swaymsg "output * dpms on"' \
+    before-sleep 'swaylock -c 1a1a1a'
+
+
+# Volume
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# Luminosità Schermo
+bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+
+# Nel file config
+seat seat0 xcursor_theme Adwaita 24
+
+
+## Configurazione della modalità notte
+# Avvia il filtro luce blu al boot (imposta le tue coordinate)
+exec_always killall wlsunset; wlsunset -l 45.0 -L 9.0 -t 3500 -T 6500
+
+# Forza il tema scuro per le app GTK
+exec_always gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+
+#Riordinare i workspace
+# Esempio: chiudi finestra e riordina i workspace
+bindsym $mod+Shift+m kill; exec swaymsg -t get_workspaces | jq -r '.[] | .name' | awk '{print "rename workspace " $1 " to " NR}' | xargs -L1 swaymsg
+
+# Gesture configuration
+# Slide con tre dita verso sinistra/destra per cambiare workspace
+bindgesture swipe:right workspace prev
+bindgesture swipe:left workspace next
+
+# Slide con quattro dita per cambiare l'intensità della luce (opzionale, ma figo)
+bindgesture swipe:up exec brightnessctl set 5%+
+bindgesture swipe:down exec brightnessctl set 5%-
+
+# scratchpad
+# Nasconde la finestra corrente nello scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Mostra (o cicla) le finestre nello scratchpad
+bindsym $mod+minus scratchpad show
+
+# Screenshot dell'intero schermo e salvataggio in Pictures
+bindsym Print exec grim ~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png
+
+# Screenshot di un'area selezionata e salvataggio in Pictures
+bindsym Shift+Print exec grim -g "$(slurp)" ~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png
+
+# Screenshot di un'area e copia immediata negli appunti (molto comodo)
+bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy
+
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec systemctl --user restart xdg-desktop-portal

@@ -1,0 +1,15 @@
+theme = "gruvbox_dark_hard" # O "catppuccin_mocha", sono già inclusi
+
+[editor]
+line-number = "relative" # Utile per saltare tra le righe velocemente
+cursorline = true
+auto-format = true
+idle-timeout = 200 # Rende i menu più reattivi
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false # Mostra anche i file nascosti (es. .gitignore)
