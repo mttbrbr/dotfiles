@@ -1,0 +1,19 @@
+[manager]
+# Mostra le proporzioni delle 3 colonne (Cartella precedente, Contenuto attuale, Anteprima)
+# Modifica i numeri per dare più o meno spazio all'anteprima
+ratio = [1, 3, 4]
+show_hidden = false
+show_symlink = true
+
+[preview]
+# Ottimizza l'anteprima delle immagini su Wayland/Sway
+image_filter = "triangle"
+max_width = 1920
+max_height = 1080
+
+[opener]
+# Dice a Yazi come aprire i file quando clicchi o premi Invio
+#xdg-open userà le tue app predefinite su Sway (es. il browser per gli HTML)
+open = [
+    { run = 'xdg-open "$@"', desc = "Open" }
+]
