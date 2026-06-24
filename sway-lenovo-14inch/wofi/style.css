@@ -1,17 +1,31 @@
-window {
-    font-family: "Inter", "JetBrains Mono";
-    font-size: 16px;
-    background-color: #1a1a1a;
-    color: #ffffff;
-    border: 2px solid #ffffff;
-}
-#input {
-    margin: 10px;
-    border: none;
-    background-color: #222222;
-    color: #ffffff;
-}
-#entry:selected {
-    background-color: #ffffff;
-    color: #1a1a1a;
+{
+    "layer": "top",
+    "position": "top",
+    "height": 32,
+    "spacing": 4,
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio", "backlight", "battery", "tray"],
+
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{name}"
+    },
+    "clock": {
+        "format": "{:%H:%M  •  %d %b}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "backlight": {
+        "format": "☀ {percent}%"
+    },
+    "battery": {
+        "states": { "warning": 30, "critical": 15 },
+        "format": "🔋 {capacity}%",
+        "format-charging": "⚡ {capacity}%"
+    },
+    "pulseaudio": {
+        "format": "🔊 {volume}%",
+        "format-muted": "🔇 MUTED"
+    }
 }

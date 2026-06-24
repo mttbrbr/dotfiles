@@ -1,32 +1,81 @@
+/* Grayish Sage — Waybar — testo grande e bold */
+
 * {
+    font-family: "Iosevka Nerd Font", monospace;
+    font-size: 15px;
+    font-weight: 700;
     border: none;
     border-radius: 0;
-    font-family: "Inter", "JetBrains Mono", sans-serif;
-    font-size: 11px;
-    font-weight: 800; /* Font molto spesso per stile typo */
+    min-height: 0;
 }
 
 window#waybar {
-    background: transparent;
+    background-color: alpha(#0d0f0d, 0.92);
+    color: #a8b8a0;
+    border-radius: 12px;
 }
 
-#workspaces, #clock, #network, #cpu, #memory, #battery {
-    background: #1a1a1a;
-    color: #ffffff;
-    margin: 5px 4px;
-    padding: 0 12px;
-    border: 1px solid #333333;
-}
-
-#workspaces button.focused {
-    background: #ffffff;
-    color: #1a1a1a;
+#workspaces,
+#clock,
+#pulseaudio,
+#backlight,
+#battery {
+    background-color: transparent;
+    color: #a8b8a0;
+    padding: 0 14px;
+    border-radius: 8px;
+    transition: background 200ms ease, color 200ms ease;
 }
 
 #workspaces button {
-    color: #888888;
+    background: transparent;
+    color: #3d4a3d;
+    padding: 0 10px;
+    border-radius: 6px;
+    min-width: 28px;
+    font-weight: 700;
+    transition: background 150ms ease, color 150ms ease;
+}
+
+#workspaces button.focused,
+#workspaces button.active {
+    background-color: alpha(#7a9e7e, 0.18);
+    color: #9bbf9f;
+}
+
+#workspaces button:hover {
+    background-color: alpha(#a8b8a0, 0.08);
+    color: #c8d8be;
 }
 
 #clock {
-    border: 1px solid #ffffff;
+    color: #c8d8be;
+    letter-spacing: 0.04em;
+    font-weight: 700;
+}
+
+#pulseaudio,
+#backlight,
+#battery {
+    color: #7a9080;
+}
+
+#pulseaudio:hover,
+#backlight:hover,
+#battery:hover {
+    color: #a8b8a0;
+    background-color: alpha(#a8b8a0, 0.06);
+}
+
+#pulseaudio.muted {
+    color: #3d4a3d;
+}
+
+#battery.warning {
+    color: #c8b080;
+}
+
+#battery.critical {
+    color: #bf7878;
+    opacity: 0.8;
 }

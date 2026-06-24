@@ -1,30 +1,38 @@
 {
     "layer": "top",
     "position": "top",
+    "margin-top": 8,
+    "margin-left": 10,
+    "margin-right": 10,
     "height": 30,
     "modules-left": ["sway/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["network", "cpu", "memory", "battery"],
+    "modules-right": ["network", "pulseaudio", "backlight", "battery"],
 
     "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
         "format": "{name}"
     },
     "clock": {
-        "format": "{:%H:%M  —  %d %b}"
+        "format": "{:%H:%M  •  %d %b}"
+    },
+    "backlight": {
+        "format": "LUM {percent}%"
+    },
+    "battery": {
+        "states": { "warning": 30, "critical": 15 },
+        "format": "BAT {capacity}%",
+        "format-charging": "CHR {capacity}%"
+    },
+    "pulseaudio": {
+        "format": "VOL {volume}%",
+        "format-muted": "MUTED"
     },
     "network": {
         "format-wifi": "WIFI",
         "format-ethernet": "ETH",
-        "format-disconnected": "DISCONNECTED"
-    },
-    "cpu": { 
-        "format": "CPU {usage}%" 
-    },
-    "memory": { 
-        "format": "RAM {used}GB" 
-    },
-    "battery": {
-        "format": "BAT {capacity}%",
-        "format-charging": "CHARGING {capacity}%"
+        "format-disconnected": "DISCONNECTED",
+        "tooltip-format": "{ifname} via {gwaddr}"
     }
 }

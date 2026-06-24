@@ -192,14 +192,10 @@ output * bg $HOME/Immagini/wallpapers/dan-otis-OYFHT4X5isg-unsplash.jpg fill
 # setup schermi
 output eDP-1 pos 0 0
 # output HDMI-A-1 pos -2560 0
-output HDMI-A-1 pos -320 -1440
-#output HDMI-A-1 pos 1920 0
+# output HDMI-A-1 pos -320 -1440
+output HDMI-A-1 pos 1920 0
 
 # Tema scuro
 # Forza il tema scuro per le applicazioni GTK
    exec_always gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
    exec_always gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
-
-for_window [title="codex-pink-dot"] #floating enable, border none, resize set width 3 height 3, move position 900 -200, sticky enable
-#floating_minimum_size 1 x 1
-bindsym $mod+Shift+a exec ~/.local/bin/ask-selected-codex

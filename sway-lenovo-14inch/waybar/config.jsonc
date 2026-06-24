@@ -1,0 +1,46 @@
+{
+    "layer": "top",
+    "position": "top",
+    "margin-top": 10,
+    "margin-left": 14,
+    "margin-right": 14,
+    "height": 42,
+    "spacing": 4,
+
+    "modules-left":   ["sway/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right":  ["pulseaudio", "backlight", "battery"],
+
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{name}"
+    },
+
+    "clock": {
+        "format": "{:%H:%M  •  %d %b}",
+        "tooltip-format": "<tt>{calendar}</tt>"
+    },
+
+    "backlight": {
+        "format": "LUM {percent}%",
+        "on-scroll-up":   "brightnessctl set 5%+",
+        "on-scroll-down": "brightnessctl set 5%-"
+    },
+
+    "battery": {
+        "states": { "warning": 30, "critical": 15 },
+        "format":          "BAT {capacity}%",
+        "format-charging": "CHR {capacity}%",
+        "format-full":     "FULL",
+        "tooltip-format":  "{timeTo}"
+    },
+
+    "pulseaudio": {
+        "format":         "VOL {volume}%",
+        "format-muted":   "MUTED",
+        "on-click":       "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-scroll-up":   "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+    }
+}
