@@ -1,0 +1,153 @@
+# Helix theme — Grayish Sage
+# ~/.config/helix/themes/sage.toml
+
+"ui.background"              = { bg = "bg" }
+"ui.background.separator"    = { fg = "surface1" }
+"ui.window"                  = { fg = "surface1" }
+"ui.gutter"                  = { bg = "bg" }
+"ui.gutter.selected"         = { bg = "bg_soft" }
+
+"ui.text"                    = { fg = "fg" }
+"ui.text.focus"              = { fg = "fg_bright", modifiers = ["bold"] }
+"ui.text.inactive"           = { fg = "fg_dim" }
+"ui.text.info"               = { fg = "sage" }
+
+"ui.cursor"                  = { fg = "bg", bg = "sage" }
+"ui.cursor.match"            = { fg = "bg", bg = "sage_dim" }
+"ui.cursor.insert"           = { fg = "bg", bg = "fg" }
+"ui.cursor.select"           = { fg = "bg", bg = "warn" }
+"ui.cursor.primary"          = { fg = "bg", bg = "sage_bright" }
+
+"ui.selection"               = { bg = "surface1" }
+"ui.selection.primary"       = { bg = "surface0", modifiers = ["bold"] }
+
+"ui.linenr"                  = { fg = "overlay" }
+"ui.linenr.selected"         = { fg = "fg_dim" }
+
+"ui.statusline"              = { fg = "fg_dim", bg = "bg_hard" }
+"ui.statusline.active"       = { fg = "fg", bg = "bg_hard" }
+"ui.statusline.inactive"     = { fg = "overlay", bg = "bg_hard" }
+"ui.statusline.normal"       = { fg = "bg", bg = "sage", modifiers = ["bold"] }
+"ui.statusline.insert"       = { fg = "bg", bg = "fg_bright", modifiers = ["bold"] }
+"ui.statusline.select"       = { fg = "bg", bg = "warn", modifiers = ["bold"] }
+
+"ui.popup"                   = { fg = "fg", bg = "bg_soft" }
+"ui.popup.info"              = { fg = "fg", bg = "bg_soft" }
+"ui.menu"                    = { fg = "fg", bg = "bg_soft" }
+"ui.menu.selected"           = { fg = "fg_bright", bg = "surface0", modifiers = ["bold"] }
+"ui.menu.scroll"             = { fg = "overlay", bg = "bg_soft" }
+
+"ui.help"                    = { fg = "fg", bg = "bg_soft" }
+
+"ui.highlight"               = { bg = "surface0" }
+"ui.highlight.frameline"     = { bg = "surface0" }
+
+"ui.virtual.ruler"           = { bg = "bg_soft" }
+"ui.virtual.whitespace"      = { fg = "surface1" }
+"ui.virtual.indent-guide"    = { fg = "surface1" }
+"ui.virtual.inlay-hint"      = { fg = "overlay" }
+"ui.virtual.jump-label"      = { fg = "sage_bright", modifiers = ["bold"] }
+
+"ui.debug.breakpoint"        = { fg = "err" }
+"ui.debug.active"            = { fg = "warn" }
+
+# Diagnostics
+"diagnostic.error"           = { underline = { color = "err",  style = "curl" } }
+"diagnostic.warning"         = { underline = { color = "warn", style = "curl" } }
+"diagnostic.info"            = { underline = { color = "info", style = "curl" } }
+"diagnostic.hint"            = { underline = { color = "sage", style = "dotted" } }
+"diagnostic.unnecessary"     = { modifiers = ["dim"] }
+"diagnostic.deprecated"      = { modifiers = ["crossed_out"] }
+
+# Syntax
+"comment"                    = { fg = "fg_dim", modifiers = ["italic"] }
+"comment.block.documentation"= { fg = "fg_dim", modifiers = ["italic"] }
+
+"string"                     = { fg = "sage_bright" }
+"string.regexp"              = { fg = "sage" }
+"string.special"             = { fg = "sage_dim" }
+"string.special.path"        = { fg = "sage_bright", modifiers = ["underlined"] }
+"string.special.url"         = { fg = "info", modifiers = ["underlined"] }
+
+"constant"                   = { fg = "sage_bright" }
+"constant.numeric"           = { fg = "sage_bright" }
+"constant.character"         = { fg = "sage_bright" }
+"constant.builtin"           = { fg = "sage", modifiers = ["italic"] }
+
+"variable"                   = { fg = "fg" }
+"variable.builtin"           = { fg = "fg_bright", modifiers = ["italic"] }
+"variable.parameter"         = { fg = "fg", modifiers = ["italic"] }
+"variable.other.member"      = { fg = "fg" }
+
+"keyword"                    = { fg = "sage_dim", modifiers = ["bold"] }
+"keyword.control"            = { fg = "sage_dim", modifiers = ["bold"] }
+"keyword.control.return"     = { fg = "sage_dim", modifiers = ["bold"] }
+"keyword.operator"           = { fg = "sage_dim" }
+"keyword.directive"          = { fg = "sage_dim", modifiers = ["italic"] }
+
+"operator"                   = { fg = "fg_dim" }
+
+"function"                   = { fg = "fg_bright", modifiers = ["bold"] }
+"function.builtin"           = { fg = "fg_bright" }
+"function.method"            = { fg = "fg_bright" }
+"function.macro"             = { fg = "sage", modifiers = ["bold"] }
+
+"type"                       = { fg = "sage" }
+"type.builtin"               = { fg = "sage", modifiers = ["italic"] }
+"type.enum.variant"          = { fg = "sage_bright" }
+
+"constructor"                = { fg = "sage" }
+
+"namespace"                  = { fg = "fg_dim", modifiers = ["italic"] }
+
+"attribute"                  = { fg = "warn" }
+
+"punctuation"                = { fg = "fg_dim" }
+"punctuation.bracket"        = { fg = "fg_dim" }
+"punctuation.delimiter"      = { fg = "fg_dim" }
+"punctuation.special"        = { fg = "sage_dim" }
+
+"label"                      = { fg = "sage" }
+
+"tag"                        = { fg = "sage_dim" }
+"tag.builtin"                = { fg = "sage_dim", modifiers = ["bold"] }
+"tag.attribute"              = { fg = "fg_dim" }
+"tag.error"                  = { fg = "err" }
+
+"special"                    = { fg = "sage_bright" }
+
+"markup.heading"             = { fg = "fg_bright", modifiers = ["bold"] }
+"markup.heading.1"           = { fg = "sage_bright", modifiers = ["bold"] }
+"markup.heading.2"           = { fg = "sage", modifiers = ["bold"] }
+"markup.heading.3"           = { fg = "fg_bright", modifiers = ["bold"] }
+"markup.bold"                = { modifiers = ["bold"] }
+"markup.italic"              = { modifiers = ["italic"] }
+"markup.strikethrough"       = { modifiers = ["crossed_out"] }
+"markup.link.url"            = { fg = "info", modifiers = ["underlined"] }
+"markup.link.text"           = { fg = "sage_bright" }
+"markup.raw"                 = { fg = "sage_dim" }
+"markup.raw.block"           = { fg = "fg_dim" }
+
+"diff.plus"                  = { fg = "sage" }
+"diff.minus"                 = { fg = "err" }
+"diff.delta"                 = { fg = "warn" }
+"diff.plus.gutter"           = { fg = "sage" }
+"diff.minus.gutter"          = { fg = "err" }
+"diff.delta.gutter"          = { fg = "warn" }
+
+[palette]
+bg_hard    = "#0d0f0d"
+bg         = "#111411"
+bg_soft    = "#161a16"
+surface0   = "#1e241e"
+surface1   = "#2a322a"
+overlay    = "#3d4a3d"
+fg_dim     = "#6b7a6b"
+fg         = "#a8b8a0"
+fg_bright  = "#c8d8be"
+sage_dim   = "#4d6e52"
+sage       = "#7a9e7e"
+sage_bright= "#9bbf9f"
+warn       = "#c8b080"
+err        = "#a06060"
+info       = "#6a8fa8"

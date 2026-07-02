@@ -1,5 +1,5 @@
-theme = "gruvbox_dark_hard" # O "catppuccin_mocha", sono già inclusi
-
+#theme = "gruvbox_dark_hard" # O "catppuccin_mocha", sono già inclusi
+theme = "sage"
 [editor]
 line-number = "relative" # Utile per saltare tra le righe velocemente
 cursorline = true

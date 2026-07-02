@@ -203,3 +203,6 @@ output HDMI-A-1 pos -320 -1440
 for_window [title="codex-pink-dot"] #floating enable, border none, resize set width 3 height 3, move position 900 -200, sticky enable
 #floating_minimum_size 1 x 1
 bindsym $mod+Shift+a exec ~/.local/bin/ask-selected-codex
+
+# tema chiaro/scuro
+bindsym $mod+Shift+t exec gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'

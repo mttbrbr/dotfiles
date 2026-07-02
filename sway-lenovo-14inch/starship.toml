@@ -1,0 +1,77 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+command_timeout = 1000
+
+# Definisce la struttura a "capsula" con i simboli Nerd Font ( e )
+format = """
+[](fg:#3c4a3c)\
+$directory\
+[](bg:#4f5e4f fg:#3c4a3c)\
+$git_branch\
+$git_status\
+[](fg:#4f5e4f)\
+\n$character"""
+
+[directory]
+style = "bg:#3c4a3c fg:#d3dcd3 bold"
+format = "[  $path ]($style)"
+truncation_length = 3
+truncate_to_repo = true
+read_only = " 󰌾"
+read_only_style = "bg:#3c4a3c fg:#a06060"
+
+[git_branch]
+symbol = " "
+style = "bg:#4f5e4f fg:#d3dcd3"
+format = "[ $symbol$branch ]($style)"
+truncation_length = 24
+truncation_symbol = "…"
+
+[git_status]
+style = "bg:#4f5e4f fg:#dacc8e"
+format = '[$all_status$ahead_behind ]($style)'
+conflicted = "!"
+modified   = "~"
+staged     = "+"
+untracked  = "?"
+deleted    = "-"
+renamed    = "»"
+ahead      = "⇡"
+behind     = "⇣"
+diverged   = "⇕"
+up_to_date = ""
+
+[character]
+# Usa un elegante raccordo ad angolo retto per la seconda riga
+success_symbol = "[ ╰─❯](bold fg:#6b7a6b)"
+error_symbol   = "[ ╰─❯](bold fg:#a06060)"
+vimcmd_symbol  = "[ ╰─❮](bold fg:#4a574a)"
+
+# Disabilitazione dei moduli non necessari per mantenere il design pulito
+[username]
+disabled = true
+[hostname]
+disabled = true
+[package]
+disabled = true
+[cmd_duration]
+disabled = true
+[time]
+disabled = true
+[python]
+disabled = true
+[nodejs]
+disabled = true
+[rust]
+disabled = true
+[golang]
+disabled = true
+[docker_context]
+disabled = true
+[aws]
+disabled = true
+[gcloud]
+disabled = true
+[line_break]
+disabled = true
